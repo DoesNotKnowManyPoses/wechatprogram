@@ -1,0 +1,82 @@
+<!--pages/testSwiper.wxml-->
+<swiper current="{{currentPage}}"duration="{{duration}}" 
+ bindchange="handleSwiper" style="height:{{swiperHeight}}rpx" >
+<swiper-item  >
+<image  mode="scaleToFill" class="backgroundColor"></image>
+<view class="item-box" catchlongtap='showActionsWhenEmpty'>
+<view class="items">
+<view wx:for="{{records}}" class="item">
+<!--<view class="inner done" data-index="{{index}}" bindtap="finishJob">完成</view>-->
+<view class="inner txt"   data-index="{{index}}" catchlongtap='showActions' catchtap="showCompleteText" >
+<image class="imageStyle" src="transparent.gif" mode="scaleToFill" ></image>
+<view class="textdecoration">
+<view class="upperText"  ><view class="movetext" style="left:{{item.txtStyle}}">{{item.description}}</view></view> 
+<view class="value">{{item.value}}<b>$</b></view>
+</view>
+</view>
+<!--<view data-index="{{index}}" bindtap="cancelJob" class="inner del">删除</view>-->
+</view>
+</view>
+</view>
+</swiper-item>
+<swiper-item class="swiperstyle">
+<!--<view class="item-box">
+<view class="items">
+<view class="item" wx:for="{{totalRecords}}"> 
+<view class="inner txt" style="{{item.txtStyle}}"  data-index="{{index}}" >{{item.description}} 赚 {{item.value}}</view>
+<!--<view class="inner del" data-index="{{index}}" bindtap="deleteJob">删除</view> 
+</view>
+</view>
+</view>暂时不弄这个列表，准备改下逻辑，-->
+
+<image  class="backgroundImage"  class="backgroundColor"> </image>
+<view class="moneypanel" >
+<view class="totalMoney">经过<text class="highlight">{{daysSofar}}</text>天的努力，您总共赚取了<text class="highlight" >{{totalFortune}}</text></view>
+<view class="availablemoney">您现在还有<text class="highlight">{{fortune}}</text>可以支配 </view>
+<view class="spendmoney" ><input type="number" bindinput='enterNumber' class="spendmoneyInput"  value="{{tospend}}" placeholder='请输入钱的数目并确认指纹' placeholder-class="specifyPlaceholder"/> <image bindtap='spendMoney' src="thumbPrint.gif" class="spendbutton" ></image></view>
+<view class="showGraph" bindtap='showCanvas'>{{graphTip}}</view>
+<view  class="specialContainer" catchlongtap='showSpecialFunctions'></view>
+<view class="specialFunction" style="bottom:{{bottom}}rpx">
+<button type="primary" bindtap="clearAll">这个会删除所有记录，慎用</button>
+<label><input type="text" placeholder='任务描述'  bindinput='getDescription'/></label>
+<label><input type="number" placeholder='价值'  bindinput='getValue'/></label>
+<button class="addbutton" size="mini" type="primary" bindtap="addJob">添加</button>
+<button class="return" size="mini" type="primary" bindtap="hideSpecial">隐藏</button>
+</view>
+</view>
+
+</swiper-item>
+<swiper-item class="swiperstyle">
+<image  class="backgroundColor" mode="scaleToFill"></image>
+<view class="history">
+<view wx:for="{{history}}" class="historyday">
+<view class="everyday" catchtap='toggleDetails' data-index="{{index}}"> {{item.date}} <view class="totalvalue" >{{item.earning}}$</view></view>
+<view hidden='{{!item.showdetail}}' wx:for="{{item.finishedJobs}}" wx:for-item="day" class="JobInDay" wx:for-index="subindex">
+<view class="jobinfo" catchtap='showDesc' data-index="{{index}}" data-subindex="{{subindex}}"><view class="jobdesc"  >
+<view class="movetext" style="left:{{day.txtStyle}}"> {{day.description}}</view></view> <view class="jobvalue" >{{day.value}}$</view> </view>
+</view>
+</view>
+</view>
+</swiper-item>
+</swiper>
+<view class="swappage">
+<view class="swapbutton first" bindtap="clickPage" style="color:{{color[0]}}" data-page="0"> <view class="swapicon one"></view><view class="middleButton" >延伸自己</view></view>
+<view class="swapbutton second" bindtap="clickPage" style="color:{{color[1]}}" data-page="1"><view class="swapicon two"></view><view class="middleButton">任性花钱{{fortune}}$</view></view>
+<view class="swapbutton third" bindtap="clickPage" style="color:{{color[2]}}" data-page="2"> <view class="swapicon three"></view><view class="middleButton">荒诞回忆</view></view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">有意义的事情？</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" auto-focus type="text"  bindinput="getDescription" class="input" placeholder="描述要做的事情"></input>
+      <input placeholder-class="input-holder" type="number" bindinput="getValue" class="input" placeholder="估值"></input>
+      <switch class="input" type="checkbox" bindchange="setOnceISOK"  value="仅做一次" checked='{{onceisOK}}'>仅做一次？</switch>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">容我考虑下</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">先写上再说</view>
+  </view>
+</view>
+<canvas class="graphCanvas" canvas-id="lineCanvas" hidden='{{canvasDisplay}}'></canvas>

@@ -1,0 +1,16 @@
+{
+  "pages": [
+        "pages/recordlist/recordlist",
+    "pages/conversationpage/conversation",
+    "pages/testswiper/testswiper",
+
+    "pages/ViewSwiper/viewswiper"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "black",
+    "navigationBarTitleText": "意义在哪",
+    "navigationBarTextStyle": "white"
+  }
+}

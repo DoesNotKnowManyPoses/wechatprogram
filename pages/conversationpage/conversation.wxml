@@ -1,0 +1,58 @@
+<!--pages/conversationpage/conversation.wxml-->
+<scroll-view class="conversation" style="height:{{height}}rpx" scroll-y="true" scroll-top="{{height}}">  <!--容器   -->
+<view class="rightPart">
+<view class="rightWord" ><view class="floatview" >{{word1}}</view></view>
+<image class="rightImage" src="{{userImage}}"> </image>
+</view>
+<view class="leftPart">
+<image class="leftImage" src="heart3.gif"> </image>
+<view class="leftWord" >{{word2}}</view>
+</view>
+<view class="rightPart">
+<view class="rightWord" ><view class="floatview" >{{word3}}</view></view>
+<image class="rightImage"  src="{{userImage}}"> </image>
+</view>
+<view class="leftPart">
+<image class="leftImage" src="heart3.gif" > </image>
+<view class="leftWord" >{{word7}}</view>
+</view>
+<view class="rightPart">
+<view class="rightWord" ><view class="floatview" >{{word8}}$</view></view>
+<image class="rightImage"  src="{{userImage}}"> </image>
+</view>
+<view class="leftPart">
+<image class="leftImage" src="heart3.gif"> </image>
+<view class="leftWord" >{{word4}}</view>
+</view>
+<view class="rightPart">
+<view class="rightWord" ><view class="floatview" >{{word5}}</view></view>
+<image class="rightImage"  src="{{userImage}}"> </image>
+</view>
+<view class="leftPart">
+<image class="leftImage" src="heart3.gif" > </image>
+<view class="leftWord" >{{word6}}</view>
+</view>
+<view wx:if="{{mode==0}}" class="rightPart">
+<view class="rightWord" ><view class="floatview" >不辱使命</view></view>
+<image class="rightImage"  src="{{userImage}}"> </image>
+</view>
+<view wx:if="{{isDecisionMade}}" class="rightPart">
+<view class="rightWord" ><view class="floatview" >{{decision}}</view></view>
+<image class="rightImage"  src="{{userImage}}"> </image>
+</view>
+</scroll-view>
+<view wx:if="{{mode==1}}" class="decisionPanel">
+<view class="decisionButton" style="background-color:{{bgcolor[0]}}" data-decision="0" bindtap='handleDecision'>
+先做了这个
+</view>
+<view class="decisionButton" style="background-color:{{bgcolor[1]}}" data-decision="1" bindtap='handleDecision'>
+今天先不做
+</view>
+<view class="decisionButton" style="background-color:{{bgcolor[2]}}" data-decision="2" bindtap='handleDecision'>
+以后也不做
+</view>
+<view class="decisionButton" style="background-color:{{bgcolor[3]}}" data-decision="3" bindtap='handleDecision'>
+再考虑下
+</view>
+</view>
+

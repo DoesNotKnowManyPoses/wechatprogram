@@ -1,0 +1,96 @@
+/* pages/conversationpage/conversation.wxss 
+在这里学到了啥呢？ .conversation
+就是如果未知高度的话，一般是通过relative这种占据空间的形式，来自动扩展。
+relative这种形式是偏移默认的位置。所以比如a偏移了原来的左20rpx，b原本是紧挨着a的，那么为了偏移后还是紧挨着a，则也要偏移left20rpx。
+这叫相对。而且这里的left和right不能像absolute那样用。就只是偏移原来的位置。可以适当用margin来扩充高度。
+还有就是微信那个右边说话，因为要考虑到框的长度要符合字符串的长度，而且是末尾字符要靠近用户头像，所以用left和width来根据说话内容的长短
+来动态决定说话框的位置。vertical-align. 
+*/
+.conversation{
+  box-sizing:border-box;
+  width:750rpx;
+  height:90%;
+  position:absolute;
+  left:0;
+  top:0;
+  overflow: auto;
+  background-color: rgb(240,240,240);
+}
+.leftPart{
+  left:0;
+}
+.rightPart{
+  left:46rpx;
+}
+.leftPart, .rightPart{
+  margin-top: 20rpx;
+  position:relative;
+  width:700rpx;
+  top:0;
+}
+.leftImage,.leftWord, .rightImage,.rightWord{
+  display: inline-block;
+}
+.leftImage{
+ left:10rpx;
+}
+.rightImage{
+  left:60rpx;
+}
+.leftImage,.rightImage{
+  position:relative;
+  top:10rpx;
+  width:80rpx;
+  height:80rpx;
+}
+.leftWord{
+  left:20rpx;
+  background-color: white;
+  max-width: 540rpx;
+}
+
+.rightWord{
+  width:540rpx;
+  left:50rpx;
+  overflow:hidden;   /*让父元素根据子float的元素的高度变化*/
+}
+.rightWord,.leftWord{
+  line-height: 80rpx;
+  position:relative;
+  white-space: pre-wrap;
+  vertical-align: top;
+  font-size:36rpx;
+  padding-left: 15rpx;
+  margin:10rpx 0;
+  border-radius: 15rpx;
+}
+.floatview{
+  float:right;
+  max-width:540rpx;
+  border-radius: 15rpx;
+  background-color: green;
+  line-height: 80rpx;
+  padding:0 15rpx;
+}
+.decisionPanel{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:750rpx;
+  border-top: 1px solid grey;
+}
+.decisionButton{
+ width:187rpx;
+ display: inline-block;
+ height: 100rpx;
+ line-height: 100rpx;
+ text-align: center;
+ font-size:30rpx;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

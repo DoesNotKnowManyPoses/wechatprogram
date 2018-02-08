@@ -1,0 +1,442 @@
+/* pages/recordlist/recordlist.wxss */
+/* pages/testSwiper.wxss */
+/*.swiperstyle{
+overflow:hidden;
+position:relative;
+top:0;
+left:0;
+}  */
+swiper{
+  position:relative;  /*why set it to fixed or absolute, the pulldown does not show.*/
+  left:0;
+  top:0;
+  width:100%;
+}
+
+.textdecoration{
+  display:inline-block;
+  position:absolute;  
+  top:-20rpx;       /*why minue value shows the information */
+  left:120rpx;
+  height:100rpx;   
+  width:80%;
+}
+.upperText{
+  left:0rpx;
+  position: absolute;
+  height:90rpx;
+  width:600rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.movetext{
+  left:0rpx;
+  top:6rps;
+  width:100%;
+  height:100%;
+  transition: left 4s linear;
+  font-size:32rpx;
+}
+.value{
+  position: absolute;
+  right:0rpx;
+  top:40rpx;
+  height:100%;
+  font-size: 30rpx;
+  width:100rpx;
+  text-align: right;
+  color:#e64340;
+}
+.imageStyle{
+  position:relative;
+  top:0rpx;
+  left:0rpx;
+  width:80rpx;
+  height:90rpx;
+}
+.backgroundImage{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+.backgroundColor{
+  position:absolute;
+  width:100%;
+  height:100%;
+  /*background-color: rgb(120,24,28); */
+  background-color:rgb(240,240,240);
+}
+.newJob{
+  width:100%;
+  height:100rpx;
+  background-color: white;
+  padding:20rpx 20rpx;
+}
+.swappage{    /* why the bottom and the height will affect the show of not of scroll bar   fixed solved this issue.*/ 
+  position:fixed;
+  border-top:1px solid grey;
+  z-index: 6;
+  width:100%;
+  height:120rpx;
+  background-color:white;
+  margin:0;
+  padding:0;
+  font-weight: bold;
+  opacity: 1;
+  bottom:-2rpx;
+}
+.swapbutton{
+  width:33%;
+  height:100%;
+  display:inline-block;
+  text-align: center;
+  font-size:25rpx;
+  margin:0;
+}
+
+.middleButton{
+  height:40rpx;
+  width:100%;
+  text-align: center;
+  overflow:auto;
+  margin:0;
+  font-family: 'icomoon';
+}
+
+
+.swapicon{
+  height:70rpx;
+  width:100%;
+  font-family: 'icomoon';
+  font-size:42rpx;
+  line-height: 70rpx;
+}
+.swapicon.one::after{
+  content:"\e920";
+}
+.swapicon.two::after{
+  content:"\e9a3";
+}
+.swapicon.three::after{
+  content:"\e914";
+}
+view{
+    position: relative;
+    box-sizing: border-box;
+}
+
+.item-box{
+    position:relative;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    overflow: auto;
+}
+
+.items{
+    width: 100%;
+    opacity: 0.9;
+}
+
+
+.item{
+    position: relative;
+    border: 1rpx solid #ddd;
+    margin-top:-1rpx;   /*remove the overlap of border*/
+    height: 100rpx;
+    line-height: 100rpx;
+    overflow: hidden;
+}
+.item:first-child{
+  margin-top:0;   /*get the border of the first item.*/
+}
+
+.inner{
+
+    position: absolute;
+
+    top:0;
+
+}
+
+.inner.txt{
+
+    background-color: #fff;
+
+    width: 100%;
+
+    z-index: 5;
+
+    padding:0
+10rpx;
+
+    transition: left 0.2s ease-in-out;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+
+}
+
+.inner.del{
+    background-color: #e64340;
+    width: 180rpx;
+    text-align: center;
+    z-index: 4;
+    right: 0;
+    color: #fff
+
+}
+.inner.done{
+  background-color:green;
+  width:180rpx;
+  text-align: center;
+  z-index:4;
+  left:0;
+  color:#fff;
+}
+
+.item-icon{
+
+    width: 64rpx;
+
+    vertical-align: middle;
+
+    margin-right: 16rpx
+
+}
+
+
+/*modal copied from website */
+.show-btn {
+  margin-top: 100rpx;
+  color: #22cc22;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 20%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+  overflow: auto;
+}
+
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: content-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+}
+/*show the jobs that have been done*/
+.history{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow: auto;
+}
+.everyday{
+  width:100%;
+  height:40rpx;
+  background-color: #dedede;
+  color:#666;
+  /*background-color:rgb(112,51,77);
+  color:black;*/
+  font-size: 30rpx;
+  line-height: 40rpx;
+  padding-left:40rpx;
+  
+  border-bottom: 1rpx solid grey;
+}
+.JobInDay{
+  width:100%;
+  background-color: white;
+  
+}
+.totalMoney,.availablemoney,.spendmoney,.jobinfo{
+  width:100%;
+  height:100rpx;
+  line-height: 100rpx;
+  border-bottom:1px solid #ddd;
+  padding-left:60rpx;
+  background-color: white;
+}
+.totalMoney{
+  border-top:1px solid #ddd
+}
+.spendmoneyInput{
+  height:100%;
+  width:500rpx;
+}
+.jobdesc{
+  height: 60rpx;
+  line-height: 60rpx;
+  position: absolute;
+  top:0;
+  font-size: 35rpx;
+  width:100%;
+  white-space:nowrap;
+}
+.jobvalue{
+  height:40rpx;
+  line-height: 40rpx;
+  position: absolute;
+  right:0;
+  width:100rpx;
+  font-size: 30rpx;
+  top:60rpx;
+  text-align: right;
+  padding-right:20rpx;
+  color:#e64340;
+}
+.totalvalue{
+  position: absolute;
+  right:0;
+  top:0;
+  text-align: right;
+  padding-right:80rpx;
+}
+.historyimage{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.moneypanel{
+  position:relative;
+  width:100%;
+  left:0;
+  top:0;
+}
+.specialFunction{
+  position:fixed;
+  transition: bottom 1s linear;
+  width:100%;
+  height:200rpx;
+  background-color: white;
+  border:1px solid grey;
+}
+.specialContainer{
+  width:100%;
+  height:600rpx;
+  position:relative;
+}
+.graphCanvas{
+  position:relative;
+  width:740rpx;
+  height:500rpx;
+  margin-top:40rpx;
+  left:0;
+}
+.spendbutton{
+ width:150rpx;
+ position:absolute;
+ top:0;
+ right:0;
+ height:100rpx;
+ font-size:30rpx;
+ border-radius: 20rpx;
+ line-height: 100rpx;
+background-color: grey;
+text-align: center;
+}
+
+/*这里是为了用view来模仿swiper的表现形式*/
+.swiperViewContainer{
+  position:relative;
+  top:0;
+  left:0;
+  width:100%;
+  overflow: hidden;
+  padding:0;
+  margin:0;
+}
+.swiperview{
+ position:absolute;
+ width:750rpx;
+ height:100%;
+ overflow: auto;
+ margin:0;
+}
+.swiperviewTransition{
+  transition:left 0.15s linear;
+}
+
+/* This stylesheet generated by Transfonter (https://transfonter.org) on November 30, 2017 1:05 PM */
+
+
+@font-face {
+    font-family: 'icomoon';
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
